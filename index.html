@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tile Switch</title>
+</head>
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        background: black;
+    }
+</style>
+
+<body data-env="inProduction">
+    <main id="game"></main>
+    <script src="phaser.min.js"></script>
+    <script>
+        // Load `src/Main.js` inDevelopment, `dist/bundle.js` inProduction
+        const env = document.body.getAttribute('data-env');
+        const script = document.createElement('script');
+
+        if (env === 'inDevelopment') {
+            script.src = 'src/Main.js';
+        } else if (env === 'inProduction') {
+            script.src = 'dist/bundle.js';
+        }
+
+        script.type = 'module';
+        document.body.appendChild(script);
+    </script>
+</body>
+
+</html>
